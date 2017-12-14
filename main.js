@@ -1,22 +1,48 @@
 var fs = require("fs");
 console.log('reading csv file');
-var data = fs.readFileSync('file.csv');
+var data2 = fs.readFileSync('file.csv');
 console.log('file read , displaying');
-console.log(data.toString());
-console.log('changing ')
-var data2 = fs.readFileSync('file2.csv');
-// Create a writable stream
-var writerStream = fs.createWriteStream('file.csv');
-// Write the data to stream with encoding to be utf8
-writerStream.write(data2, 'UTF8');
-// Mark the end of file
-writerStream.end();
-// Handle stream events --> finish, and error
-writerStream.on('finish', function () {
-    console.log('change completed to :');
-    console.log(data.toString());
-    console.log("Program Ended");
-});
-writerStream.on('error', function (err) {
-    console.log(err.stack);
+console.log(data2.toString());
+var columns = ["column1", "column2", "column3", "column4", "column5"];
+require("csv-to-array")({
+  file: "/opt/designer24/csvFile/file.csv",
+  columns: columns
+}, function (err, array) {
+  console.log(err || array);
+  console.log(array[1].column4)
+  console.log(JSON.stringify(array[1]));
+  array.push({
+    "column1": array[1].column5,
+    "column2": array[1].column4,
+    "column3": array[1].column3,
+    "column4": array[1].column2,
+    "column5": array[1].column1
+  });
+  var j = 5;
+  var i = 1;
+  for (i; i < 6; i++) {
+    var col = "column" + i;
+    var cols = "column" + j;
+    array[1].col = array[2].cols;
+    j--;
+  }
+  console.log(JSON.stringify(array[2]));
+
+  //console.log(array[0].toString());
+  // array[3].push;
+  //array[3]=array[2];
+  // var j =4;
+  //     for(var i=0;i<5;i++){
+  //         var col="column"+i ,col2="column"+j;
+  //         array[2].col=array[3].col2;
+  //         j--;
+  //     }
+  // console.log(array[2]);
+  // String[] table = new String[array.length];
+  // var j=0;
+  // for(var i = array.length-1; i>=0; i--){
+  //     table[j]=array[i];
+  //     j++;
+  // }
+  // array=table;
 });
