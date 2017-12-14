@@ -9,7 +9,7 @@ require("csv-to-array")({
   columns: columns
 }, function (err, array) {
   console.log(err || array);
-  console.log(array[1].column4)
+  console.log("displaying array to be reversed");
   console.log(JSON.stringify(array[1]));
   array.push({
     "column1": array[1].column5,
@@ -18,6 +18,7 @@ require("csv-to-array")({
     "column4": array[1].column2,
     "column5": array[1].column1
   });
+  console.log("reversing");
   var j = 5;
   var i = 1;
   for (i; i < 6; i++) {
@@ -26,23 +27,8 @@ require("csv-to-array")({
     array[1].col = array[2].cols;
     j--;
   }
+  console.log("displaying reversed array obj")
   console.log(JSON.stringify(array[2]));
 
-  //console.log(array[0].toString());
-  // array[3].push;
-  //array[3]=array[2];
-  // var j =4;
-  //     for(var i=0;i<5;i++){
-  //         var col="column"+i ,col2="column"+j;
-  //         array[2].col=array[3].col2;
-  //         j--;
-  //     }
-  // console.log(array[2]);
-  // String[] table = new String[array.length];
-  // var j=0;
-  // for(var i = array.length-1; i>=0; i--){
-  //     table[j]=array[i];
-  //     j++;
-  // }
-  // array=table;
+  
 });
