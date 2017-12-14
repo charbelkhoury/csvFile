@@ -30,5 +30,5 @@ require("csv-to-array")({
   console.log("displaying reversed array obj")
   console.log(JSON.stringify(array[2]));
 
-  
+
 });
